@@ -29,9 +29,8 @@ var path = require("path");
 var encryptor = require("file-encryptor");
 var colors = require("colors");
 
-var IS_FILE_ = false;
-var IS_DELTE_FILE_ = false;
 var PASSWORD = "6e2cb4a07e2a85293ae65c2d627be55531720175";
+var MAX_FILES = 20;
 
 var TAB = "\t";
 var NL = "\n";
@@ -41,15 +40,17 @@ var options = { algorithm: 'aes-256-cbc' };
 function encryptedFileName(file)
 {
 	var nameCipher = crypto.createCipher('aes-256-cbc', PASSWORD);
-	nameCipher.update(path.basename(file), 'utf8', 'hex');
-	return path.join(path.dirname(file), nameCipher.final('hex') + ".enc");
+	var name = nameCipher.update(path.basename(file), 'utf8', 'hex');
+	name += nameCipher.final('hex');
+	return path.join(path.dirname(file), name + ".enc");
 }
 
 function decryptedFileName(file)
 {
 	var nameDecipher = crypto.createDecipher('aes-256-cbc', PASSWORD);
-	nameDecipher.update(path.basename(file, ".enc"), 'hex', 'utf8');
-	return path.join(path.dirname(file), nameDecipher.final('utf8'));
+	var name = nameDecipher.update(path.basename(file, ".enc"), 'hex', 'utf8');
+	name += nameDecipher.final('utf8');
+	return path.join(path.dirname(file), name);
 }
 
 function encryptFile(file, cb)
@@ -68,42 +69,90 @@ function decryptFile(file, cb)
 	});
 }
 
-function encryptDirectory(directory, cbPerFile, cb)
+function getFiles(directory, cb)
 {
+	var files = [];
 	fsWalk.files(directory, function(baseDir, filename, stat, next) {
 		if(path.extname(filename) != ".enc")
 		{
 			var filepath = path.join(baseDir, filename);
-			encryptFile(filepath, function(err, file, name) {
-				cbPerFile(file, name);
-				next();
-			});
+			files.push(filepath);
+			next();
 		}
 		else
 			next();
 	}, function(err) {
 		if(err) throw err;
-		cb();
+		cb(files);
+	});
+}
+
+function getEncryptedFiles(directory, cb)
+{
+	var files = [];
+	fsWalk.files(directory, function(baseDir, filename, stat, next) {
+		if(path.extname(filename) == ".enc")
+		{
+			var filepath = path.join(baseDir, filename);
+			files.push(filepath);
+			next();
+		}
+		else
+			next();
+	}, function(err) {
+		if(err) throw err;
+		cb(files);
+	});
+}
+
+function encryptDirectory(directory, cbPerFile, cb)
+{
+	var currentFiles = 0;
+	var runEncryption = function(files)
+	{
+		while(currentFiles < MAX_FILES && files.length > 0)
+		{
+			currentFiles++;
+			encryptFile(files.shift(), function(err, file, name) {
+				cbPerFile(file, name);
+				currentFiles--;
+				if(files.length == 0 && currentFiles == 0)
+					cb();
+				else
+					runEncryption(files);
+			});
+		}
+		if(files.length == 0 && currentFiles == 0)
+			cb();
+	}
+	getFiles(directory, function(files) {
+		runEncryption(files);
 	});
 }
 
 function decryptDirectory(directory, cbPerFile, cb)
 {
-	fsWalk.files(directory, function(baseDir, filename, stat, next) {
-		if(path.extname(filename) == ".enc")
+	var currentFiles = 0;
+	var runDecryption = function(files)
+	{
+		while(currentFiles < MAX_FILES && files.length > 0)
 		{
-			var filepath = path.join(baseDir, filename);
-			decryptFile(filepath, function(err, file, name) {
+			currentFiles++;
+			decryptFile(files.shift(), function(err, file, name) {
 				cbPerFile(file, name);
-				next();
+				currentFiles--;
+				if(files.length == 0 && currentFiles == 0)
+					cb();
+				else
+					runDecryption(files);
 			});
 		}
-		else
-			next();
-	}, function(err) {
-		if(err) throw err;
-		cb();
-	});	
+		if(files.length == 0 && currentFiles == 0)
+			cb();
+	}
+	getEncryptedFiles(directory, function(files) {
+		runDecryption(files);
+	});
 }
 
 function start()
@@ -113,6 +162,8 @@ function start()
 	args.shift();
 
 	var target = false;
+	var IS_FILE_ = false;
+	var IS_DELTE_FILE_ = false;
 
 	for(var i = 0; i < args.length; i++)
 	{
