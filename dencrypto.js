@@ -112,8 +112,6 @@ function start()
 	args.shift();
 	args.shift();
 
-	console.log(args);
-
 	var target = false;
 
 	for(var i = 0; i < args.length; i++)
