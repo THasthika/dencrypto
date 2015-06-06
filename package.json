@@ -13,6 +13,7 @@
     "type": "git",
     "url": "https://github.com/tharindu96/dencrypto.git"
   },
+  "keywords": ["file", "encryption", "security"],
   "bin": {
     "dencrypto": "dencrypto.js"
   },
