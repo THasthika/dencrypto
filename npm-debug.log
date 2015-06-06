@@ -1,0 +1,58 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'unpublish',
+1 verbose cli   'thb-framework',
+1 verbose cli   '--force' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose node symlink /usr/bin/node
+5 warn using --force I sure hope you know what you are doing.
+6 verbose request where is /thb-framework?write=true
+7 verbose request registry https://registry.npmjs.org/
+8 verbose request id acaa05469f1ae32b
+9 verbose url raw /thb-framework?write=true
+10 verbose url resolving [ 'https://registry.npmjs.org/', './thb-framework?write=true' ]
+11 verbose url resolved https://registry.npmjs.org/thb-framework?write=true
+12 verbose request where is https://registry.npmjs.org/thb-framework?write=true
+13 info trying registry request attempt 1 at 22:57:06
+14 http GET https://registry.npmjs.org/thb-framework?write=true
+15 http 200 https://registry.npmjs.org/thb-framework?write=true
+16 silly registry.get cb [ 200,
+16 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+16 silly registry.get     etag: '"6VA2LVSR5AYGKL4R3BYK0Z1HI"',
+16 silly registry.get     'content-type': 'application/json',
+16 silly registry.get     'cache-control': 'max-age=0',
+16 silly registry.get     'content-length': '6252',
+16 silly registry.get     'accept-ranges': 'bytes',
+16 silly registry.get     date: 'Sat, 06 Jun 2015 17:27:08 GMT',
+16 silly registry.get     via: '1.1 varnish',
+16 silly registry.get     age: '0',
+16 silly registry.get     connection: 'keep-alive',
+16 silly registry.get     'x-served-by': 'cache-sin6920-SIN',
+16 silly registry.get     'x-cache': 'MISS',
+16 silly registry.get     'x-cache-hits': '0',
+16 silly registry.get     'x-timer': 'S1433611628.124506,VS0,VE863',
+16 silly registry.get     vary: 'Accept' } ]
+17 info unpublish No version specified, removing all
+18 verbose request where is /thb-framework/-rev/15-24b444a5824fcf856b5b297763b75142
+19 verbose request registry https://registry.npmjs.org/
+20 verbose url raw /thb-framework/-rev/15-24b444a5824fcf856b5b297763b75142
+21 verbose url resolving [ 'https://registry.npmjs.org/',
+21 verbose url resolving   './thb-framework/-rev/15-24b444a5824fcf856b5b297763b75142' ]
+22 verbose url resolved https://registry.npmjs.org/thb-framework/-rev/15-24b444a5824fcf856b5b297763b75142
+23 verbose request where is https://registry.npmjs.org/thb-framework/-rev/15-24b444a5824fcf856b5b297763b75142
+24 error Error: This request requires auth credentials. Run `npm login` and repeat the request.
+24 error     at RegClient.regRequest [as request] (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:107:15)
+24 error     at RegClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/unpublish.js:25:19)
+24 error     at saved (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+24 error     at Object.oncomplete (fs.js:108:15)
+25 error If you need help, you may report this *entire* log,
+25 error including the npm and node versions, at:
+25 error     <http://github.com/npm/npm/issues>
+26 error System Linux 3.16.0-38-generic
+27 error command "/usr/bin/node" "/usr/bin/npm" "unpublish" "thb-framework" "--force"
+28 error cwd /home/tharindu/Projects/dencrypto
+29 error node -v v0.10.38
+30 error npm -v 1.4.28
+31 verbose exit [ 1, true ]
