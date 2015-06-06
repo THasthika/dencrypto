@@ -1,21 +1,81 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'cache', 'clean' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'decrypto' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.38
 4 verbose node symlink /usr/bin/node
-5 error Error: EACCES, unlink '/home/tharindu/.npm/_git-remotes/http-ikt-pm2-io-ikt-git-58fd7291'
-5 error  { [Error: EACCES, unlink '/home/tharindu/.npm/_git-remotes/http-ikt-pm2-io-ikt-git-58fd7291']
-5 error   errno: 3,
-5 error   code: 'EACCES',
-5 error   path: '/home/tharindu/.npm/_git-remotes/http-ikt-pm2-io-ikt-git-58fd7291' }
-6 error Please try running this command again as root/Administrator.
-7 error System Linux 3.16.0-38-generic
-8 error command "/usr/bin/node" "/usr/bin/npm" "cache" "clean"
-9 error cwd /home/tharindu/Projects/dencrypto
-10 error node -v v0.10.38
-11 error npm -v 1.4.28
-12 error path /home/tharindu/.npm/_git-remotes/http-ikt-pm2-io-ikt-git-58fd7291
-13 error code EACCES
-14 error errno 3
-15 error stack Error: EACCES, unlink '/home/tharindu/.npm/_git-remotes/http-ikt-pm2-io-ikt-git-58fd7291'
-16 verbose exit [ 3, true ]
+5 verbose cache add [ 'decrypto', null ]
+6 verbose cache add name=undefined spec="decrypto" args=["decrypto",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'decrypto',
+7 verbose parsed url   path: 'decrypto',
+7 verbose parsed url   href: 'decrypto' }
+8 silly lockFile 528115bc-decrypto decrypto
+9 verbose lock decrypto /home/tharindu/.npm/528115bc-decrypto.lock
+10 silly lockFile 528115bc-decrypto decrypto
+11 silly lockFile 528115bc-decrypto decrypto
+12 verbose addNamed [ 'decrypto', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 8dffc0ee-decrypto decrypto@
+15 verbose lock decrypto@ /home/tharindu/.npm/8dffc0ee-decrypto.lock
+16 silly addNameRange { name: 'decrypto', range: '*', hasData: false }
+17 verbose request where is /decrypto
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 6cbca4313717f484
+20 verbose url raw /decrypto
+21 verbose url resolving [ 'https://registry.npmjs.org/', './decrypto' ]
+22 verbose url resolved https://registry.npmjs.org/decrypto
+23 verbose request where is https://registry.npmjs.org/decrypto
+24 info trying registry request attempt 1 at 23:17:19
+25 http GET https://registry.npmjs.org/decrypto
+26 http 404 https://registry.npmjs.org/decrypto
+27 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '51',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   date: 'Sat, 06 Jun 2015 17:47:21 GMT',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   connection: 'keep-alive',
+27 verbose headers   'x-served-by': 'cache-sin6922-SIN',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1433612841.402068,VS0,VE255' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '51',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     date: 'Sat, 06 Jun 2015 17:47:21 GMT',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     connection: 'keep-alive',
+28 silly registry.get     'x-served-by': 'cache-sin6922-SIN',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1433612841.402068,VS0,VE255' } ]
+29 silly lockFile 8dffc0ee-decrypto decrypto@
+30 silly lockFile 8dffc0ee-decrypto decrypto@
+31 error 404 404 Not Found: decrypto
+31 error 404
+31 error 404 'decrypto' is not in the npm registry.
+31 error 404 You should bug the author to publish it
+31 error 404
+31 error 404 Note that you can also install from a
+31 error 404 tarball, folder, or http url, or git url.
+32 error System Linux 3.16.0-38-generic
+33 error command "/usr/bin/node" "/usr/bin/npm" "install" "-g" "decrypto"
+34 error cwd /home/tharindu/Projects/dencrypto
+35 error node -v v0.10.38
+36 error npm -v 1.4.28
+37 error code E404
+38 verbose exit [ 1, true ]

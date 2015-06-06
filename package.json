@@ -1,10 +1,10 @@
 {
   "name": "dencrypto",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "A file encryption program",
   "main": "dencrypto.js",
   "scripts": {
-    "test": "nodemon dencrypto.js"
+    "test": "node dencrypto.js"
   },
   "preferGlobal": true,
   "author": "Tharindu Hasthika",
@@ -12,6 +12,9 @@
   "repository" : {
     "type": "git",
     "url": "https://github.com/tharindu96/dencrypto.git"
+  },
+  "bin": {
+    "dencrypto": "dencrypto.js"
   },
   "dependencies": {
     "colors": "^1.1.0",

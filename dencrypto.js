@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 
 /**
@@ -105,7 +105,8 @@ function start()
 	args.shift();
 	args.shift();
 
-	var type = args.shift();
+	console.log(args);
+
 	var target = false;
 
 	for(var i = 0; i < args.length; i++)
@@ -146,6 +147,8 @@ function start()
 		}
 	}
 
+	var type = args.shift();
+	
 	switch(type)
 	{
 		case "encrypt":
