@@ -1,0 +1,17 @@
+{
+  "name": "dencrypto",
+  "version": "0.0.1",
+  "description": "A file encryption program",
+  "main": "dencrypto.js",
+  "scripts": {
+    "test": "nodemon dencrypto.js"
+  },
+  "preferGlobal": true,
+  "author": "Tharindu Hasthika",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.0",
+    "file-encryptor": "^0.1.0",
+    "fs-walk": "0.0.1"
+  }
+}
