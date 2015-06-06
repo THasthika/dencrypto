@@ -1,12 +1,14 @@
 #dencrypto: A file encryption program
 
 ##usage:
+
 	```bash
 	encrypt -d ./folder --delete -p mypassword
 	decrypt -d ./folder --delete -p mypassword
 	```
 
 ##options:
+
 	use encrypt or decrypt keywords to choose the type of action
 	```bash
 	-d or --directory [folder_path] #the folder to be encrypted
