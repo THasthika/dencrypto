@@ -211,7 +211,7 @@ function start()
 			if(IS_FILE_)
 				encryptFile(target, function(err) {
 					if(IS_DELTE_FILE_)
-						fs.unlink(file);
+						fs.unlink(target);
 					console.log("file encrypted!".green);
 				});
 			else
@@ -227,7 +227,7 @@ function start()
 			if(IS_FILE_)
 				decryptFile(target, function(err) {
 					if(IS_DELTE_FILE_)
-						fs.unlink(file);
+						fs.unlink(target);
 					console.log("file decrypted!".green);
 				});
 			else
