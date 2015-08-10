@@ -21,6 +21,7 @@ options:
 	-p or --password [password] set a custom password
 **/
 
+// added someting
 
 var crypto = require("crypto");
 var fs = require("fs");
