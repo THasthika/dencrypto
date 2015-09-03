@@ -1,6 +1,6 @@
 {
   "name": "dencrypto",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A file encryption program",
   "main": "dencrypto.js",
   "scripts": {
