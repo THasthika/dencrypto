@@ -182,7 +182,7 @@ function start()
 					TAB+"-d or --directory [folder_path] - the folder to be encrypted"+NL+
 					TAB+"-f or --file [file_path] - the file to be encrypted"+NL+
 					TAB+"--delete - delete the source file after encryption (works both ways)"+NL+
-					TAB+"-p or --password [password] set a custom password"+NL;
+					TAB+"-p or --password [password] set a custom password"+NL+
 					TAB+"-n set the number of concurrent jobs"+NL;
 				console.log(help);
 				process.exit(0);
