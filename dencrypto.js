@@ -19,6 +19,7 @@ options:
 	-f or --file [file_path] - the file to be encrypted
 	--delete - delete the source file after encryption (works both ways)
 	-p or --password [password] set a custom password
+	-n set the number of concurrent jobs
 **/
 
 // added someting
@@ -31,7 +32,7 @@ var encryptor = require("file-encryptor");
 var colors = require("colors");
 
 var PASSWORD = "6e2cb4a07e2a85293ae65c2d627be55531720175";
-var MAX_FILES = 20;
+var MAX_FILES = 10;
 
 var TAB = "\t";
 var NL = "\n";
@@ -182,24 +183,49 @@ function start()
 					TAB+"-f or --file [file_path] - the file to be encrypted"+NL+
 					TAB+"--delete - delete the source file after encryption (works both ways)"+NL+
 					TAB+"-p or --password [password] set a custom password"+NL;
+					TAB+"-n set the number of concurrent jobs"+NL;
 				console.log(help);
 				process.exit(0);
 				break;
 			case "-d":
 			case "--directory":
+				if(!args[i+1])
+				{
+					console.log("invalid directory!");
+					process.exit(-1);
+				}
 				target = args[i+1];
 				IS_FILE_ = false;
 				break;
 			case "-f":
 			case "--file":
+				if(!args[i+1])
+				{
+					console.log("invalid file!");
+					process.exit(-1);
+				}
 				target = args[i+1];
 				IS_FILE_ = true;
 				break;
 			case "-p":
 			case "--password":
+				if(!args[i+1])
+				{
+					console.log("please enter a password!");
+					process.exit(-1);
+				}
 				PASSWORD = args[i+1];
+				break;
 			case "--delete":
 				IS_DELTE_FILE_ = true;
+				break;
+			case "-n":
+				if(!args[i+1])
+				{
+					console.log("set the no of files");
+					process.exit(-1);
+				}
+				MAX_FILES = args[i+1];
 				break;
 		}
 	}
