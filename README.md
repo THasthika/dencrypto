@@ -13,4 +13,5 @@
 	-f or --file [file_path] #the file to be encrypted
 	--delete - delete the source #file after encryption (works both ways)
 	-p or --password [password] #set a custom password
+	-n set the number of concurrent jobs
 	```
